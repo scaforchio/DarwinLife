@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Ambiente {
     private int numRows;
     private int numCols;
@@ -30,6 +33,15 @@ public class Ambiente {
         setProbNascitaConNConfinanti(probNasc);
         float probMorte []={1,1,0,0,1,1,1,1,1};
         setProbMorteConNConfinanti(probMorte);
+    }
+
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(numRows, numCols, tolleranzaAmbientaleMassima, sopportazioneAmbientale, scostamentoMassimoMutazioniAmbientali, frequenzaModificaAmbientale, etaMedia, cicliIniziali, tolleranzaAmbientalePerGenerazioneSpontanea, scostamentoMassimoMutazioniLivbe, ritardoLoop);
+        result = 31 * result + Arrays.hashCode(probNascitaConNConfinanti);
+        result = 31 * result + Arrays.hashCode(probMorteConNConfinanti);
+        return result;
     }
 
     public float[] getProbMorteConNConfinanti() {

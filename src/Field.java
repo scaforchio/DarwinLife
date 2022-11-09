@@ -94,11 +94,11 @@ public class Field {
                     confinanti.clear();
                     for (int k = -1; k <= 1; k++)
                         for (int l = -1; l <= 1; l++) {
-                            int posX = i + k;
-                            int posY = j + l;
+                            int posX = j + l;
+                            int posY = i + k;
                             if (!(k == 0 & l == 0))
                                 if (posX >= 0 & posY >= 0 & posX < a.getNumCols() & posY < a.getNumRows()) {
-                                    LivBe confinante = oldGrid[posX][posY].getResident();
+                                    LivBe confinante = oldGrid[posY][posX].getResident();
                                     if (confinante != null)
                                         confinanti.add(confinante);
                                 }
@@ -126,11 +126,11 @@ public class Field {
                     // System.out.println(confinanti.size());
                     for (int k = -1; k <= 1; k++)
                         for (int l = -1; l <= 1; l++) {
-                            int posX = i + k;
-                            int posY = j + l;
+                            int posX = j + l;
+                            int posY = i + k;
                             if (!(k == 0 & l == 0))
                                 if (posX >= 0 & posY >= 0 & posX < a.getNumCols() & posY < a.getNumRows()) {
-                                    LivBe confinante = oldGrid[posX][posY].getResident();
+                                    LivBe confinante = oldGrid[posY][posX].getResident();
                                     if (confinante != null)
                                         confinanti.add(confinante);
                                 }
@@ -153,45 +153,7 @@ public class Field {
             }
     }
 
-    /*
-        private void morteSpontanea(Field oldField) {
 
-            final Cell oldGrid[][] = oldField.getGrid();
-            float probMorte[] = a.getProbMorteConNConfinanti();
-            ArrayList<LivBe> confinanti = new ArrayList<LivBe>();
-            for (int i = 0; i < a.getNumRows(); i++)
-                for (int j = 0; j < a.getNumCols(); j++) {
-                    if (oldGrid[i][j].getResident() != null) {
-                        //Estraggo tutti residenti vicini
-                        confinanti.clear();
-                       // System.out.println(confinanti.size());
-                        for (int k = -1; k <= 1; k++)
-                            for (int l = -1; l <= 1; l++) {
-                                int posX = i + k;
-                                int posY = j + l;
-                                if (!(k==0 & l==0))
-                                if (posX >= 0 & posY >= 0 & posX < a.getNumCols() & posY < a.getNumRows()) {
-                                    LivBe confinante = oldGrid[posX][posY].getResident();
-                                    if (confinante != null)
-                                        confinanti.add(confinante);
-                                }
-                            }
-                        int numConfinanti = confinanti.size();
-                        //System.out.println("dopo "+confinanti.size());
-                        boolean morteLivBe = false;
-
-                        if (Math.random() < probMorte[numConfinanti])
-                            morteLivBe = true;
-                        if (morteLivBe) {
-                            //System.out.println("Morte: "+numConfinanti);
-                            grid[i][j].setResident(null);
-                        }
-
-                    }
-
-                }
-        }
-    */
     private void generazioneSpontanea() {
         int toll = a.getTolleranzaAmbientalePerGenerazioneSpontanea();
         for (int i = 0; i < a.getNumRows(); i++)
